@@ -1,0 +1,26 @@
+package com.tcl.assignemnt.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+
+/***
+ * Created to handle business exception
+ * @author Sagar
+ *
+ */
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+
+@ExceptionHandler(ResourceNotFoundException.class)
+public ResponseEntity<String> handle(ResourceNotFoundException ex) {
+return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+}
+@ExceptionHandler(ValidationException.class)
+public ResponseEntity<String> handle(ValidationException ex) {
+return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+}
+}
